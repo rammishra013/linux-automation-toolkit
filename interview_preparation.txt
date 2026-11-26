@@ -1,0 +1,41 @@
+Q1. What is Bash scripting?
+"Bash scripting is a way to automate Linux commands. Instead of executing commands manually, I write them inside a script and execute the script whenever required. I use Bash scripts for system monitoring, backup, log cleanup and routine administration."
+Q2. Why did you create this project?
+"I created this project to automate common Linux administration tasks. The toolkit checks CPU load, memory, disk usage and services. It also creates backups and cleans old files in a test directory. I used Cron to schedule these tasks."
+Q3. How does your health-check script work?
+"My health-check script collects basic server information such as hostname, uptime, CPU load, memory usage and disk usage. It stores the output in a log file with a timestamp. This helps me monitor the server and troubleshoot issues."
+Q4. How do you check disk utilization in Linux?
+"I use the df -h command to check filesystem disk utilization. It displays the disk usage in a human-readable format. In my Bash script, I use df and awk to extract the disk usage percentage and compare it with a configured threshold."
+Q5. How do you check memory utilization?
+"I use the free -h command to check memory usage. In my script, I use the free command with awk to calculate the percentage of used memory."
+Q6. What is Cron?
+"Cron is a Linux scheduling service. It allows me to execute scripts or commands automatically at a specific time or interval. In this project, I use Cron to schedule health checks, disk monitoring, service checks, backups and cleanup."
+Q7. What is the difference between Cron and a Bash script?
+"A Bash script contains the automation logic. Cron is the scheduler that executes the script automatically at a configured time."
+Q8. How do you check whether a service is running?
+"I use systemctl status service_name to check the service status. In my automation script, I use systemctl is-active --quiet to check whether the service is active."
+Q9. How do you create a backup in Linux?
+"I use the tar command to create a compressed archive of the source directory. In my script, I generate a timestamped backup filename, create the archive, verify the archive and log the result."
+Q10. How do you restore a backup?
+"I extract the backup archive into a separate directory using the tar -xzf command. Then I verify the restored files and their contents. I always test restoration because backup success alone does not prove that the data can be recovered."
+Q11. How do you delete old logs?
+"I use the find command with file type and age filters to identify eligible files. In my lab, I restrict the cleanup script to a dedicated test directory. In production, I would add a dry-run, path validation, appropriate permissions and a retention policy before deleting anything."
+Q12. How do you troubleshoot a failed Bash script?
+"I first execute the script manually. I check the permissions, path, environment and command output. If required, I use bash -x to debug the script. I also check the logs and verify the exit code of the commands."
+Q13. What is chmod +x?
+"chmod +x adds execute permission to a file. After adding execute permission, I can run the script directly using its path."
+Q14. What is tee?
+"tee displays output on the terminal and writes the same output to a file. In my project, I use tee -a to append log messages to log files while displaying them."
+Q15. What is awk?
+"awk is a Linux text-processing utility. I use it to extract specific columns and process command output. For example, I use awk to extract disk utilization and memory usage."
+Q16. What is the difference between > and >>?
+- > overwrites a file.
+- >> appends data to a file.
+Q17. What is exit 1?
+"exit 1 terminates the script with a non-zero exit status. It usually indicates an error or failure. Exit code zero generally indicates successful completion."
+Q18. Why use absolute paths in Cron?
+"Cron runs with a limited environment and may not use the same working directory or PATH as my interactive shell. I use absolute paths to avoid path-related issues."
+Q19. How do you make a script safer?
+"I use input validation, proper permissions, absolute paths, logging and error handling. For destructive tasks, I use a dry-run, a restricted target directory and path validation. I also avoid running scripts as root unless necessary."
+Q20. How would you improve this project in production?
+"I would add better error handling, alert integrations, configurable thresholds, structured logs, backup retention, monitoring integration and tests. I would also use a dedicated service account and central monitoring to manage the toolkit across multiple servers."
